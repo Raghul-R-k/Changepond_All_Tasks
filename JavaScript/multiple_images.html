@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Display Actor</title>
+<style>
+  /* CSS for styling */
+  .actor-image {
+    width: 200px;
+    height: auto;
+  }
+</style>
+</head>
+<body>
+
+<!-- HTML for buttons and image -->
+
+
+<div>
+  <img id="actorImage" class="actor-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlniUYe3nQIqOmzjsggYVpI-NxhOIjhTg1Xg&s" alt="Actor Image">
+  <p id="actorName"></p>
+</div>
+<div>
+    <button onclick="displayActor('kamal')">Kamal Hassan</button>
+    <button onclick="displayActor('ajith')">Ajith Kumar</button>
+    <button onclick="displayActor('ranbir')">Ranbir Kapoor</button>
+    <button onclick="displayActor('vijay')">Vijay</button>
+    <button onclick="displayActor('fahad')">Fahad Fassil</button>
+  </div>
+
+<script>
+  // JavaScript function to display actor image and name
+  function displayActor(actor) {
+    var actorImage = document.getElementById('actorImage');
+    var actorName = document.getElementById('actorName');
+
+    // Set the image source based on the selected actor
+    switch(actor) {
+      case 'kamal':
+        actorImage.src = 'https://th.bing.com/th/id/OIP.Jq883vta3SuXnCzMOB-iLAHaNK?w=115&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7';
+        actorName.textContent = 'Kamal Hassan';
+        break;
+      case 'ajith':
+        actorImage.src = 'https://th.bing.com/th?id=OIP.tWgVtlhfyEFd9lIqLECupgHaKX&w=211&h=295&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2';
+        actorName.textContent = 'Ajith Kumar';
+        break;
+      case 'ranbir':
+        actorImage.src = 'https://th.bing.com/th?id=OIP.eNzpcL_4ufxLHJWM7ZJo8gHaEK&w=333&h=187&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2';
+        actorName.textContent = 'Ranbir Kapoor';
+        break;
+      case 'vijay':
+        actorImage.src = 'https://th.bing.com/th?id=OIP._8aYUKP6rN4dG_Xkx2T95gHaJQ&w=223&h=279&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2';
+        actorName.textContent = 'Vijay';
+        break;
+      case 'fahad':
+        actorImage.src = 'https://th.bing.com/th?id=OIP.5nhyipVQScEmDmyJd63N-wHaIs&w=230&h=270&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2';
+        actorName.textContent = 'Fahad Fassil';
+        break;
+      
+    }
+  }
+</script>
+
+</body>
+</html>

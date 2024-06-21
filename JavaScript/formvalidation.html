@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: honeydew;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"] {
+            width: calc(50% - 10px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        select {
+            width: calc(50% - 10px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .error {
+            color: red;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+      
+    </style>
+</head>
+<body>
+    <div class="background-container">
+    <div class="container">
+        <h2>Form Validation</h2>
+        <form id="myForm" onsubmit="return validateForm()">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username">
+                <span id="usernameError" class="error"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password">
+                <span id="passwordError" class="error"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+                <span id="emailError" class="error"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="contact">Contact Number:</label>
+                <input type="text" id="contact" name="contact">
+                <span id="contactError" class="error"></span>
+            </div>
+
+            <div class="form-group">
+                <label>Gender:</label>
+                <div class="checkbox-group">
+                    <input type="radio" id="male" name="gender" value="male">
+                    <label for="male">Male</label>
+                    <input type="radio" id="female" name="gender" value="female">
+                    <label for="female">Female</label>
+                    <input type="radio" id="other" name="gender" value="other">
+                    <label for="other">Other</label>
+                </div>
+                <span id="genderError" class="error"></span>
+            </div>
+
+            <div class="form-group">
+                <label>Education:</label>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="ssc" name="education" value="ssc">
+                    <label for="ssc">SSC</label>
+                    <input type="checkbox" id="hsc" name="education" value="hsc">
+                    <label for="hsc">HSC</label>
+                    <input type="checkbox" id="ug" name="education" value="ug">
+                    <label for="ug">UG</label>
+                    <input type="checkbox" id="pg" name="education" value="pg">
+                    <label for="pg">PG</label>
+                    <input type="checkbox" id="master" name="education" value="master">
+                    <label for="master">Master</label>
+                </div>
+                <span id="educationError" class="error"></span>
+            </div>
+
+            <input type="submit" value="Submit">
+        </form>
+
+
+    </div>
+    
+        <script>
+            function validateForm() {
+   
+    var username = document.getElementById('username').value;
+    var password = document.getElementById('password').value;
+    var email = document.getElementById('email').value;
+    var contact = document.getElementById('contact').value;
+    var gender = document.querySelector('input[name="gender"]:checked');
+    var education = document.querySelectorAll('input[name="education"]:checked');
+
+  
+    var errorElements = document.getElementsByClassName('error');
+    for (var i = 0; i < errorElements.length; i++) {
+        errorElements[i].innerText = "";
+    }
+
+ 
+    var isValid = true;
+
+    
+    if (username.trim() === "") {
+        document.getElementById('usernameError').innerText = "Username is required";
+        isValid = false;
+    }
+
+   
+    if (password.trim() === "") {
+        document.getElementById('passwordError').innerText = "Password is required";
+        isValid = false;
+    }
+
+   
+    if (email.trim() === "") {
+        document.getElementById('emailError').innerText = "Email is required";
+        isValid = false;
+    } else {
+        
+        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+            document.getElementById('emailError').innerText = "Invalid email format";
+            isValid = false;
+        }
+    }
+
+    
+    if (contact.trim() === "") {
+        document.getElementById('contactError').innerText = "Contact number is required";
+        isValid = false;
+    }
+
+    
+    if (!gender) {
+        document.getElementById('genderError').innerText = "Please select a gender";
+        isValid = false;
+    }
+
+   
+    if (education.length === 0) {
+        document.getElementById('educationError').innerText = "Please select at least one education level";
+        isValid = false;
+    }
+
+   
+    if (!isValid) {
+        return false;
+    }
+}
+
+        </script>
+    </div>
+
+   
